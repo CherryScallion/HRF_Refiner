@@ -1,0 +1,29 @@
+# ==========================================
+# NeuroRefiner 工程配置文件
+# ==========================================
+
+experiment_name: "Run_01_BaseCorrection"
+
+# --- 数据路径 ---
+# 假设你已经把 Base Model 的输出和原始 GT 打包成了 H5
+# 格式建议: H5文件里有两个 dataset: 'pred' 和 'gt'
+# shape: [Total_Timepoints, H, W]
+data:
+  train_h5_path: "./data/train_data.h5"
+  val_h5_path: "./data/val_data.h5"
+  window_size: 5          # T: 卷积核覆盖的时间窗口长度
+
+# --- 训练超参 ---
+train:
+  batch_size: 64
+  learning_rate: 1e-3
+  epochs: 50
+  num_workers: 4          #根据CPU核心数调整
+
+# --- Loss 权重 ---
+# 对应 MSE, SSIM, CCC
+loss_weights: [1.0, 0.5, 0.5] 
+
+# --- 模型参数 ---
+model:
+  hidden_dim: 64
