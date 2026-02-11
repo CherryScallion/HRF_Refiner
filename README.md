@@ -2,4 +2,4 @@
 
 Legacy and useless codes.
 
-An interesting approach but failed.
+Was an interesting approach but failed.
